@@ -1,6 +1,9 @@
-@import './settings.scss';
+@import "./settings.scss";
+@import "./typography.scss";
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -16,8 +19,20 @@ body {
   overflow-y: scroll;
 }
 
-a, a:hover, a:visited {
+a,
+a:hover,
+a:visited {
   text-decoration: none;
 }
 
-@import "./typography.scss";
+.switchWrapper {
+  position: relative;
+
+  > :first-child ~ * {
+    position: absolute;
+    top: 200px;
+    left: 0;
+    width: 100%;
+    animation: top 1s linear;
+  }
+}
