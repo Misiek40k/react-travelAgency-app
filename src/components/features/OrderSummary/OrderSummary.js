@@ -8,7 +8,7 @@ import styles from './OrderSummary.scss';
 const OrderSummary = ({ tripCost, options }) => {
   return (
     <h2 className={styles.component}>Total:
-      <strong>{calculateTotal(formatPrice(tripCost), options)}</strong>
+      <strong> {calculateTotal(formatPrice(tripCost), options)}</strong>
     </h2>);
 };
 
