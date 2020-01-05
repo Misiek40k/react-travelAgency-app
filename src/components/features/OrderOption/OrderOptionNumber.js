@@ -4,7 +4,7 @@ import { formatPrice } from '../../../utils/formatPrice';
 
 import styles from './OrderOption.scss';
 
-const OrderOptionNumber = ({currentValue, limits, setOptionValue, price}) => {
+const OrderOptionNumber = ({ currentValue, limits, setOptionValue, price }) => {
   return (
     <div className={styles.number}>
       <input
@@ -13,7 +13,7 @@ const OrderOptionNumber = ({currentValue, limits, setOptionValue, price}) => {
         value={currentValue}
         min={limits.min}
         max={limits.max}
-        onChange={event => setOptionValue(event.currentTarget.value)}
+        onChange={event => setOptionValue(parseInt(event.currentTarget.value))}
       >
       </input> {formatPrice(price)}
     </div>
