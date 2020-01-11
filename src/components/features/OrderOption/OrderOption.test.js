@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import OrderOption from './OrderOption';
 
-describe('Component TripSummary', () => {
+describe('Component OrderOption', () => {
 
   it('should render without crashing', () => {
     const component = shallow(<OrderOption name='name' type='number' />);
@@ -111,6 +111,26 @@ for (let type in optionTypes) {
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
+
+        break;
+      }
+      case 'icons': {
+
+        break;
+      }
+      case 'checkboxes': {
+
+        break;
+      }
+      case 'number': {
+
+        break;
+      }
+      case 'text': {
+
+        break;
+      }
+      case 'date': {
 
         break;
       }
