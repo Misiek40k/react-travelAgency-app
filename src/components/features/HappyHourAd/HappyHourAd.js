@@ -13,6 +13,7 @@ export default class HappyHourAd extends Component {
 
   static propTypes = {
     title: PropTypes.string,
+    promoDescription: PropTypes.string,
   }
 
   getCountdownTime() {
@@ -27,12 +28,13 @@ export default class HappyHourAd extends Component {
   }
 
   render() {
-    const { title } = this.props;
+    const { title, promoDescription } = this.props;
+    const countdown = this.getCountdownTime();
 
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.promoDescription}>{this.getCountdownTime()}</div>
+        <div className={styles.promoDescription}>{(countdown > 23 * 60 * 60) ? promoDescription : countdown}</div>
       </div>
     );
   }
