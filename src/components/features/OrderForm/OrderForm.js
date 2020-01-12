@@ -13,12 +13,22 @@ import Button from '../../common/Button/Button';
 
 // import styles from './OrderForm.scss';
 
-const sendOrder = (options, tripCost) => {
+const validateForm = (options, tripCost, tripName, tripCountry, tripId) => {
+  const textInputs = document.querySelectorAll('.text');
+  const isValid = Array.from(textInputs).every(input => input.value !== '');
+
+  isValid ? sendOrder(options, tripCost, tripName, tripCountry, tripId) : console.log('Form is invalid');
+};
+
+const sendOrder = (options, tripCost, tripName, tripCountry, tripId) => {
   const totalCost = formatPrice(calculateTotal(tripCost, options));
 
   const payload = {
     ...options,
     totalCost,
+    tripName,
+    tripCountry,
+    tripId,
   };
 
   const url = settings.db.url + '/' + settings.db.endpoint.orders;
@@ -40,18 +50,18 @@ const sendOrder = (options, tripCost) => {
     });
 };
 
-const OrderForm = ({ options, tripCost, setOrderOption }) => {
+const OrderForm = ({ options, tripCost, setOrderOption, tripName, tripCountry, tripId }) => {
   return (
     <Grid>
       <Row>
         {pricing.map(option => (
           <Col md={4} key={option.id}>
-            <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
+            <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} validateForm={validateForm} />
           </Col>
         ))}
         <Col xs={12}>
           <OrderSummary tripCost={tripCost} options={options} />
-          <Button onClick={() => sendOrder(options, tripCost)}>Order now!</Button>
+          <Button onClick={() => validateForm(options, tripCost, tripName, tripCountry, tripId)}>Order now!</Button>
         </Col>
       </Row>
     </Grid>
@@ -62,6 +72,9 @@ OrderForm.propTypes = {
   tripCost: PropTypes.string,
   options: PropTypes.object,
   setOrderOption: PropTypes.func,
+  tripName: PropTypes.string,
+  tripId: PropTypes.string,
+  tripCountry: PropTypes.string,
 };
 
 export default OrderForm;
