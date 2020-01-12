@@ -5,6 +5,12 @@ import styles from './HappyHourAd.scss';
 
 export default class HappyHourAd extends Component {
 
+  constructor() {
+    super();
+
+    setInterval(() => this.forceUpdate(), 1000);
+  }
+
   static propTypes = {
     title: PropTypes.string,
   }
