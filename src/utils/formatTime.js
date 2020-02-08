@@ -1,1 +1,1 @@
-export const formatTime = (countdown) => `${countdown} formatted time`;
+export const formatTime = () => `formatted time`;
