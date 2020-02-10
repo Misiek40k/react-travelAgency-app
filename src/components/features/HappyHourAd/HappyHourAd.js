@@ -31,11 +31,12 @@ export default class HappyHourAd extends Component {
   render() {
     const { title, promoDescription } = this.props;
     const countdown = this.getCountdownTime();
+    const timer = 82800;
 
     return (
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.promoDescription}>{(countdown > 23 * 60 * 60) ? promoDescription : formatTime(countdown)}</div>
+        <div className={styles.promoDescription}>{(countdown > timer) ? promoDescription : formatTime(countdown)}</div>
       </div>
     );
   }

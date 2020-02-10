@@ -88,15 +88,17 @@ const checkDescriptionAfterTime = (time, delaySeconds, expectedDescription) => {
 };
 
 describe('Component HappyHourAd with mocked Date', () => {
+  const timer = 82800;
   checkDescriptionAtTime('11:57:58', '122');
   checkDescriptionAtTime('11:59:59', '1');
-  checkDescriptionAtTime('13:00:00', 23 * 60 * 60 + '');
+  checkDescriptionAtTime('13:00:00', timer + '');
 });
 
 describe('Component HappyHourAd with mocked Date and delay', () => {
+  const timer = 79200;
   checkDescriptionAfterTime('11:57:58', 2, '120');
   checkDescriptionAfterTime('11:59:58', 1, '1');
-  checkDescriptionAfterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
+  checkDescriptionAfterTime('13:00:00', 3600, timer + '');
 });
 
 describe('Component HappyHourAd with correct description', () => {
