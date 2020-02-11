@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {formatTime} from '../../../utils/formatTime';
+import { formatTime } from '../../../utils/formatTime';
 
 import styles from './HappyHourAd.scss';
 
@@ -9,7 +9,11 @@ export default class HappyHourAd extends Component {
   constructor() {
     super();
 
-    setInterval(() => this.forceUpdate(), 1000);
+    if (!this.isCancelled) { setInterval(() => this.forceUpdate(), 1000); }
+  }
+
+  componentWillUnmount() {
+    this.isCancelled = true;
   }
 
   static propTypes = {
