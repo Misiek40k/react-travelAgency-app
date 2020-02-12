@@ -14,8 +14,11 @@ import OrderForm from '../../features/OrderForm/OrderFormContainer';
 
 import styles from './Trip.scss';
 import { Grid, Row, Col } from 'react-flexbox-grid';
+import { promoPricing } from '../../../utils/promoPricing';
 
 const Trip = ({ error, name, image, cost, days, description, country, intro }) => {
+  let value = cost.slice(1).replace(',', '');
+
   if (error) return <NotFound />;
   else return (
     <Section>
@@ -34,7 +37,8 @@ const Trip = ({ error, name, image, cost, days, description, country, intro }) =
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem title={`<strong>Price:</strong> from ${cost}`} icon='money-bill-wave' />
+                <ListItem promo={'yes'} title={`<strong>Happy hour price: from $${promoPricing(value, 20)}</strong>`} icon='percentage' />
+                <ListItem title={`<strong>Standard price:</strong> from ${cost}`} icon='money-bill-wave' />
               </List>
             </Col>
           </Row>

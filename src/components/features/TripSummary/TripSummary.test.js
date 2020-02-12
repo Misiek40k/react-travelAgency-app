@@ -21,11 +21,11 @@ describe('Component TripSummary', () => {
   it('should render correct name, cost and days props', () => {
     const component = shallow(<TripSummary id='abc' image='image.jpg' name='name' cost='1000' days={3} tags={['abc']} />);
     const expectedName = 'name';
-    const expectedCost = 'from 1000';
+    const expectedCost = 'Standard price from: 1000';
     const expectedDays = '3 days';
     expect(component.find('.title').text()).toEqual(expectedName);
-    expect(component.find('.details').childAt(0).text()).toEqual(expectedDays);
-    expect(component.find('.details').childAt(1).text()).toEqual(expectedCost);
+    expect(component.find('.details').children().first().text()).toEqual(expectedDays);
+    expect(component.find('.details').children().last().text()).toEqual(expectedCost);
   });
 
   it('should throw error if props are not present', () => {

@@ -1,5 +1,5 @@
 export const formatTime = countdown => {
-  if (countdown == null || isNaN(countdown) || countdown < 0) {
+  if (countdown === null || isNaN(countdown) || countdown < 0) {
     return null;
   } else {
     let sec, min, hour;
