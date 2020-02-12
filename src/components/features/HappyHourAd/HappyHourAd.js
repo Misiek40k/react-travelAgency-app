@@ -9,7 +9,7 @@ export default class HappyHourAd extends Component {
   constructor() {
     super();
 
-    if (!this.isCancelled) { setInterval(() => this.forceUpdate(), 1000); }
+    !this.isCancelled && setInterval(() => this.forceUpdate(), 1000);
   }
 
   componentWillUnmount() {
